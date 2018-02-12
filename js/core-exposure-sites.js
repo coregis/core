@@ -24,13 +24,14 @@ L.mapbox.accessToken = 'pk.eyJ1IjoiY29yZS1naXMiLCJhIjoiaUxqQS1zQSJ9.mDT5nb8l_dWI
   map.removeControl(map.attributionControl);
   //attributionControl:  false;
   map.options.minZoom = 2;
-  map.options.maxZoom = 18;
+  map.options.maxZoom = 12;
  
   map.setMaxBounds([
-	[-55.279115, -265.078125], //southwest map coordinates
-    [65.261719, 69.718107] //northeast map coordinates
+	[-76, -171], //southwest map coordinates
+    [84, 191] //northeast map coordinates
 
 	])
+	
 
 // Add customized attribution  
 var attribution = L.control.attribution();
@@ -46,15 +47,13 @@ attribution.addTo(map);
 	
   var points = L.featureGroup();
   var radiation = L.featureGroup();
-  var construction = L.featureGroup();
-  var greencare = L.featureGroup();
 
   for(var i=0;i<data.length;i++) {
     var marker = L.marker([parseFloat(data[i].lat), parseFloat(data[i].lng)]);
     var popupInfo = metadata(data[i]);
 
 	//type in your desired dimensions for the markers; the marker will always be square
-	var iconDim = 31;
+	var iconDim = 22;
 	category = data[i].category.toLowerCase();
 	marker.setIcon( L.icon({
 		iconUrl: "markers/" + data[i].markerfile,
